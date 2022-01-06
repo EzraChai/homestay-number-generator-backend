@@ -1,0 +1,14 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model randomnumber {
+  id               Int      @id @default(autoincrement())
+  number_generated String
+  date_created     DateTime
+}
