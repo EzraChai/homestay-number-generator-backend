@@ -11,7 +11,7 @@ async function bootstrap() {
     new FastifyAdapter(),
     {
       cors: {
-        origin: ['http://localhost:3000'],
+        origin: ['https://cshomestay-passcode.vercel.app/'],
         methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
       },
     },
