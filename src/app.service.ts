@@ -5,18 +5,23 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class AppService {
   constructor(private readonly prismaService: PrismaService) {}
 
-  addNewNumber() {
-    const firstRandomNumber = Math.random() * 10;
-    const secondRandomNumber = Math.random() * 10;
-    const thirdRandomNumber = Math.random() * 10;
-    const fourthRandomNumber = Math.random() * 10;
+  async addNewNumber() {
+    const newRandomNumber = `${(Math.random() * 9).toFixed(0)}${(
+      Math.random() * 9
+    ).toFixed(0)}${(Math.random() * 9).toFixed(0)}${(Math.random() * 9).toFixed(
+      0,
+    )}`;
 
-    const newRandomNumber = `${firstRandomNumber}${secondRandomNumber}${thirdRandomNumber}${fourthRandomNumber}`;
+    await this.prismaService.randomnumber.create({
+      data: {
+        number_generated: newRandomNumber,
+      },
+    });
 
     return newRandomNumber;
   }
 
-  requestOlderNumber() {
-    return this.prismaService.randomNumber.findMany();
+  async requestOlderNumber() {
+    return await this.prismaService.randomnumber.findMany();
   }
 }
