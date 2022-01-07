@@ -31,12 +31,6 @@ export class AppGateway
     this.logger.log('Initialised!');
   }
 
-  // @SubscribeMessage('messageToClient')
-  // handleMessageToClient(client: Socket) {
-  //   console.log('imhere');
-  //   return this.appService.requestOlderNumber();
-  // }
-
   @SubscribeMessage('initMessageFromClient')
   async handleInitMessageFromClient(client: Socket) {
     const olderNumber = await this.appService.requestOlderNumber();
