@@ -17,14 +17,16 @@ async function bootstrap() {
     },
   );
   console.log(`App listen at PORT ${process.env.PORT}`);
+  const port = process.env.PORT || 3000;
+  const host = process.env.HOST || '0.0.0.0';
   const start = async () => {
     try {
-      await app.listen(process.env.PORT || 3000)
+      await app.listen(port, host);
     } catch (err) {
-      process.exit(1)
+      process.exit(1);
     }
-  }
-start()
+  };
+  start();
 }
 
 bootstrap();
